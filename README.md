@@ -1,2 +1,477 @@
 # shijuyouxi.store
 第一个游戏站
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shijuyouxi - Ultimate Online Puzzle Game | Play Free Now</title>
+    <meta name="description" content="Play Shijuyouxi, the addictive online puzzle game that challenges your mind. Free to play, no download required. Join millions of players worldwide!">
+    <meta name="keywords" content="shijuyouxi, online game, puzzle game, free game, browser game, mind game">
+    <meta name="author" content="Shijuyouxi Game">
+    <meta property="og:title" content="Shijuyouxi - Ultimate Online Puzzle Game">
+    <meta property="og:description" content="Play Shijuyouxi, the addictive online puzzle game. Free, fun, and challenging!">
+    <meta property="og:url" content="https://shijuyouxi.store">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="https://shijuyouxi.store/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Shijuyouxi - Ultimate Online Puzzle Game">
+    <meta name="twitter:description" content="Play Shijuyouxi, the addictive online puzzle game. Free, fun, and challenging!">
+    <link rel="canonical" href="https://shijuyouxi.store">
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            line-height: 1.6;
+            color: #1d1d1f;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #007aff, #5856d6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #1d1d1f;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #007aff;
+        }
+        
+        .hero {
+            padding: 80px 0;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            margin: 40px 20px;
+            border-radius: 20px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 700;
+            margin-bottom: 20px;
+            background: linear-gradient(45deg, #ffffff, #f0f0f0);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            margin-bottom: 30px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .play-button {
+            display: inline-block;
+            background: linear-gradient(45deg, #007aff, #5856d6);
+            color: white;
+            padding: 15px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+        }
+        
+        .play-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 15px 40px rgba(0, 122, 255, 0.4);
+        }
+        
+        .game-section {
+            margin: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        h2 {
+            font-size: 2rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1d1d1f;
+            text-align: center;
+        }
+        
+        .game-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            margin: 30px 0;
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin: 60px 20px;
+        }
+        
+        .feature-card {
+            background: rgba(255, 255, 255, 0.9);
+            backdrop-filter: blur(20px);
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            border: 1px solid rgba(255, 255, 255, 0.3);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+        }
+        
+        .feature-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            display: block;
+        }
+        
+        .game-info {
+            margin: 60px 20px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-item {
+            padding: 20px;
+            background: rgba(0, 122, 255, 0.05);
+            border-radius: 15px;
+            border-left: 4px solid #007aff;
+        }
+        
+        .info-item h3 {
+            color: #007aff;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            backdrop-filter: blur(20px);
+            color: rgba(255, 255, 255, 0.8);
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 80px;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+        
+        .footer-links a:hover {
+            color: #007aff;
+        }
+        
+        /* Mobile responsiveness */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            
+            .hero {
+                margin: 20px 10px;
+                padding: 60px 20px;
+            }
+            
+            .game-section, .game-info {
+                margin: 40px 10px;
+                padding: 30px 20px;
+            }
+            
+            .features-grid {
+                margin: 40px 10px;
+                gap: 20px;
+            }
+            
+            .feature-card {
+                padding: 25px 15px;
+            }
+            
+            .game-iframe-container {
+                height: 400px;
+            }
+            
+            h2 {
+                font-size: 1.5rem;
+            }
+            
+            .footer-links {
+                flex-direction: column;
+                gap: 15px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-iframe-container {
+                height: 300px;
+            }
+            
+            .container {
+                padding: 0 15px;
+            }
+        }
+        
+        /* Loading animation */
+        .loading {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 200px;
+        }
+        
+        .spinner {
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(0, 122, 255, 0.1);
+            border-top: 4px solid #007aff;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">Shijuyouxi</div>
+                <ul class="nav-links">
+                    <li><a href="#game">Play Game</a></li>
+                    <li><a href="#features">Features</a></li>
+                    <li><a href="#about">About</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <h1>Shijuyouxi</h1>
+                <p class="subtitle">Experience the ultimate online puzzle adventure that challenges your mind and captivates your imagination</p>
+                <a href="#game" class="play-button">🎮 Play Now - Free!</a>
+            </div>
+        </section>
+
+        <section id="game" class="game-section">
+            <div class="container">
+                <h2>🎯 Play Shijuyouxi Online</h2>
+                <p style="text-align: center; color: #666; margin-bottom: 20px;">
+                    Jump into the action immediately - no downloads, no registration required!
+                </p>
+                <div class="game-iframe-container">
+                    <iframe 
+                        src="https://shijuyouxi.store" 
+                        class="game-iframe"
+                        title="Shijuyouxi Online Game"
+                        loading="lazy"
+                        allow="fullscreen">
+                        <div class="loading">
+                            <div class="spinner"></div>
+                        </div>
+                    </iframe>
+                </div>
+                <p style="text-align: center; color: #666; font-size: 0.9rem;">
+                    Having trouble loading? Try refreshing the page or check your internet connection.
+                </p>
+            </div>
+        </section>
+
+        <section id="features" class="features-grid">
+            <div class="feature-card">
+                <span class="feature-icon">🧩</span>
+                <h2>Mind-Bending Puzzles</h2>
+                <p>Challenge yourself with increasingly complex puzzles that test your logic, strategy, and problem-solving skills. Each level brings new mechanics and surprises.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">🌐</span>
+                <h2>Play Anywhere</h2>
+                <p>Fully browser-based gameplay means you can enjoy Shijuyouxi on any device - desktop, tablet, or mobile. No downloads or installations required.</p>
+            </div>
+            <div class="feature-card">
+                <span class="feature-icon">⚡</span>
+                <h2>Instant Loading</h2>
+                <p>Optimized for speed and performance, Shijuyouxi loads instantly and runs smoothly on all modern devices and browsers.</p>
+            </div>
+        </section>
+
+        <section id="about" class="game-info">
+            <div class="container">
+                <h2>🎮 About Shijuyouxi Game</h2>
+                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 30px;">
+                    Shijuyouxi represents the next evolution in online puzzle gaming, combining intuitive gameplay with sophisticated challenge design.
+                </p>
+                
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h3>🎯 Game Genre</h3>
+                        <p>Strategic puzzle game with progressive difficulty levels and innovative mechanics that keep players engaged for hours.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>👥 Target Audience</h3>
+                        <p>Perfect for puzzle enthusiasts aged 8 to 80, from casual players looking for fun to serious gamers seeking mental challenges.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>🏆 Unique Features</h3>
+                        <p>Dynamic puzzle generation, multiple solution paths, hint system, and progress tracking make every session unique and rewarding.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>📱 Compatibility</h3>
+                        <p>Runs perfectly on Chrome, Firefox, Safari, and Edge. Optimized for both desktop and mobile devices with responsive design.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>🔒 Privacy & Safety</h3>
+                        <p>No personal data collection, no registration required. Safe, secure, and family-friendly gaming experience for everyone.</p>
+                    </div>
+                    <div class="info-item">
+                        <h3>🆓 Free to Play</h3>
+                        <p>Completely free with no hidden costs, no in-app purchases, and no premium subscriptions. Pure gaming fun without barriers.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#game">Play Game</a>
+                <a href="#features">Features</a>
+                <a href="#about">About</a>
+                <a href="/privacy">Privacy Policy</a>
+                <a href="/terms">Terms of Service</a>
+                <a href="/contact">Contact</a>
+            </div>
+            <p>&copy; 2025 Shijuyouxi.store - All rights reserved. The ultimate online puzzle gaming experience.</p>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Add loading state for iframe
+        const iframe = document.querySelector('.game-iframe');
+        const container = document.querySelector('.game-iframe-container');
+        
+        iframe.addEventListener('load', function() {
+            container.style.opacity = '1';
+        });
+
+        // Add some interactive effects
+        document.querySelectorAll('.feature-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateY(-8px) scale(1.02)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateY(0) scale(1)';
+            });
+        });
+    </script>
+</body>
+</html>
