@@ -1,22 +1,11 @@
-# shijuyouxi.store
-第一个游戏站
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Shijuyouxi - Ultimate Online Puzzle Game | Play Free Now</title>
-    <meta name="description" content="Play Shijuyouxi, the addictive online puzzle game that challenges your mind. Free to play, no download required. Join millions of players worldwide!">
-    <meta name="keywords" content="shijuyouxi, online game, puzzle game, free game, browser game, mind game">
-    <meta name="author" content="Shijuyouxi Game">
-    <meta property="og:title" content="Shijuyouxi - Ultimate Online Puzzle Game">
-    <meta property="og:description" content="Play Shijuyouxi, the addictive online puzzle game. Free, fun, and challenging!">
-    <meta property="og:url" content="https://shijuyouxi.store">
-    <meta property="og:type" content="website">
-    <meta property="og:image" content="https://shijuyouxi.store/og-image.jpg">
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Shijuyouxi - Ultimate Online Puzzle Game">
-    <meta name="twitter:description" content="Play Shijuyouxi, the addictive online puzzle game. Free, fun, and challenging!">
+    <title>Shijuyouxi - 免费在线游戏门户 | 益智休闲动作游戏</title>
+    <meta name="description" content="在Shijuyouxi玩免费在线游戏。益智游戏、休闲游戏、动作游戏，无需下载即可畅玩！">
+    <meta name="keywords" content="shijuyouxi, 在线游戏, 免费游戏, 益智游戏, 休闲游戏, 动作游戏">
     <link rel="canonical" href="https://shijuyouxi.store">
     <link rel="icon" type="image/x-icon" href="/favicon.ico">
     
@@ -29,10 +18,9 @@
         
         body {
             font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            line-height: 1.6;
-            color: #1d1d1f;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%);
             min-height: 100vh;
+            color: #2d3436;
         }
         
         .container {
@@ -44,12 +32,10 @@
         header {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
         }
         
         nav {
@@ -60,184 +46,156 @@
         }
         
         .logo {
-            font-size: 24px;
+            font-size: 28px;
             font-weight: 700;
-            background: linear-gradient(45deg, #007aff, #5856d6);
+            background: linear-gradient(45deg, #0984e3, #6c5ce7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 30px;
-        }
-        
-        .nav-links a {
-            text-decoration: none;
-            color: #1d1d1f;
-            font-weight: 500;
-            transition: color 0.3s ease;
-        }
-        
-        .nav-links a:hover {
-            color: #007aff;
         }
         
         .hero {
-            padding: 80px 0;
             text-align: center;
-            background: rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(10px);
-            margin: 40px 20px;
-            border-radius: 20px;
-            border: 1px solid rgba(255, 255, 255, 0.2);
-        }
-        
-        h1 {
-            font-size: clamp(2.5rem, 5vw, 4rem);
-            font-weight: 700;
-            margin-bottom: 20px;
-            background: linear-gradient(45deg, #ffffff, #f0f0f0);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-        }
-        
-        .subtitle {
-            font-size: 1.2rem;
-            color: rgba(255, 255, 255, 0.9);
-            margin-bottom: 30px;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
-        }
-        
-        .play-button {
-            display: inline-block;
-            background: linear-gradient(45deg, #007aff, #5856d6);
+            padding: 60px 0 40px 0;
             color: white;
-            padding: 15px 40px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
+        }
+        
+        .hero h1 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .hero p {
             font-size: 1.1rem;
-            transition: all 0.3s ease;
-            box-shadow: 0 10px 30px rgba(0, 122, 255, 0.3);
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
         }
         
-        .play-button:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 15px 40px rgba(0, 122, 255, 0.4);
-        }
-        
-        .game-section {
-            margin: 60px 20px;
+        /* 游戏分类区域 */
+        .games-container {
             background: rgba(255, 255, 255, 0.95);
             backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            border-radius: 25px 25px 0 0;
+            padding: 40px 20px;
+            margin-top: 40px;
+            min-height: 70vh;
         }
         
-        h2 {
-            font-size: 2rem;
+        .category-section {
+            margin-bottom: 50px;
+        }
+        
+        .category-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px solid #f1f3f4;
+        }
+        
+        .category-icon {
+            font-size: 2.5rem;
+            margin-right: 15px;
+        }
+        
+        .category-title {
+            font-size: 1.8rem;
             font-weight: 600;
-            margin-bottom: 20px;
-            color: #1d1d1f;
-            text-align: center;
+            color: #2d3436;
         }
         
-        .game-iframe-container {
-            position: relative;
-            width: 100%;
-            height: 600px;
+        .games-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+        
+        .game-card {
+            background: white;
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
-            margin: 30px 0;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: 2px solid transparent;
         }
         
-        .game-iframe {
-            width: 100%;
-            height: 100%;
-            border: none;
-            border-radius: 15px;
-        }
-        
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin: 60px 20px;
-        }
-        
-        .feature-card {
-            background: rgba(255, 255, 255, 0.9);
-            backdrop-filter: blur(20px);
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
-        
-        .feature-card:hover {
+        .game-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.15);
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+            border-color: #74b9ff;
         }
         
-        .feature-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            display: block;
+        .game-thumbnail {
+            width: 100%;
+            height: 160px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
         }
+        
+        .puzzle-bg { background: linear-gradient(135deg, #fd79a8, #e84393); }
+        .casual-bg { background: linear-gradient(135deg, #fdcb6e, #e17055); }
+        .action-bg { background: linear-gradient(135deg, #00b894, #00cec9); }
         
         .game-info {
-            margin: 60px 20px;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 20px;
-            padding: 40px;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
-        }
-        
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 30px;
-        }
-        
-        .info-item {
             padding: 20px;
-            background: rgba(0, 122, 255, 0.05);
-            border-radius: 15px;
-            border-left: 4px solid #007aff;
         }
         
-        .info-item h3 {
-            color: #007aff;
-            margin-bottom: 10px;
+        .game-title {
+            font-size: 1.2rem;
             font-weight: 600;
+            margin-bottom: 8px;
+            color: #2d3436;
+        }
+        
+        .game-description {
+            color: #636e72;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            margin-bottom: 15px;
+        }
+        
+        .play-btn {
+            width: 100%;
+            background: linear-gradient(45deg, #74b9ff, #0984e3);
+            color: white;
+            border: none;
+            padding: 12px;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+        
+        .play-btn:hover {
+            background: linear-gradient(45deg, #0984e3, #2d3436);
+            transform: translateY(-1px);
         }
         
         footer {
-            background: rgba(0, 0, 0, 0.8);
-            backdrop-filter: blur(20px);
+            background: rgba(45, 52, 54, 0.95);
             color: rgba(255, 255, 255, 0.8);
             text-align: center;
-            padding: 40px 20px;
-            margin-top: 80px;
+            padding: 30px 20px;
+            margin-top: 40px;
         }
         
         .footer-links {
             display: flex;
             justify-content: center;
             gap: 30px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
             flex-wrap: wrap;
         }
         
@@ -248,40 +206,32 @@
         }
         
         .footer-links a:hover {
-            color: #007aff;
+            color: #74b9ff;
         }
         
-        /* Mobile responsiveness */
+        /* 响应式设计 */
         @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-            
             .hero {
-                margin: 20px 10px;
-                padding: 60px 20px;
+                padding: 40px 0 30px 0;
             }
             
-            .game-section, .game-info {
-                margin: 40px 10px;
-                padding: 30px 20px;
+            .games-container {
+                padding: 30px 15px;
             }
             
-            .features-grid {
-                margin: 40px 10px;
-                gap: 20px;
+            .games-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
             
-            .feature-card {
-                padding: 25px 15px;
+            .category-header {
+                flex-direction: column;
+                text-align: center;
             }
             
-            .game-iframe-container {
-                height: 400px;
-            }
-            
-            h2 {
-                font-size: 1.5rem;
+            .category-icon {
+                margin-right: 0;
+                margin-bottom: 10px;
             }
             
             .footer-links {
@@ -291,35 +241,14 @@
         }
         
         @media (max-width: 480px) {
-            .game-iframe-container {
-                height: 300px;
-            }
-            
             .container {
                 padding: 0 15px;
             }
-        }
-        
-        /* Loading animation */
-        .loading {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 200px;
-        }
-        
-        .spinner {
-            width: 40px;
-            height: 40px;
-            border: 4px solid rgba(0, 122, 255, 0.1);
-            border-top: 4px solid #007aff;
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-        }
-        
-        @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            
+            .game-thumbnail {
+                height: 140px;
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
@@ -328,11 +257,6 @@
         <div class="container">
             <nav>
                 <div class="logo">Shijuyouxi</div>
-                <ul class="nav-links">
-                    <li><a href="#game">Play Game</a></li>
-                    <li><a href="#features">Features</a></li>
-                    <li><a href="#about">About</a></li>
-                </ul>
             </nav>
         </div>
     </header>
@@ -340,107 +264,176 @@
     <main>
         <section class="hero">
             <div class="container">
-                <h1>Shijuyouxi</h1>
-                <p class="subtitle">Experience the ultimate online puzzle adventure that challenges your mind and captivates your imagination</p>
-                <a href="#game" class="play-button">🎮 Play Now - Free!</a>
+                <h1>免费在线游戏门户</h1>
+                <p>精选益智、休闲、动作游戏，无需下载，即点即玩！</p>
             </div>
         </section>
 
-        <section id="game" class="game-section">
+        <div class="games-container">
             <div class="container">
-                <h2>🎯 Play Shijuyouxi Online</h2>
-                <p style="text-align: center; color: #666; margin-bottom: 20px;">
-                    Jump into the action immediately - no downloads, no registration required!
-                </p>
-                <div class="game-iframe-container">
-                    <iframe 
-                        src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
-                        class="game-iframe"
-                        title="Shijuyouxi Online Game"
-                        loading="quick"
-                        allow="fullscreen; gamepad; microphone; camera">
-                        <div class="loading">
-                            <div class="spinner"></div>
-                        </div>
-                    </iframe>
-                </div>
-                <p style="text-align: center; color: #666; font-size: 0.9rem;">
-                    Having trouble loading? Try refreshing the page or check your internet connection.
-                </p>
-            </div>
-        </section>
-
-        <section id="features" class="features-grid">
-            <div class="feature-card">
-                <span class="feature-icon">🧩</span>
-                <h2>Mind-Bending Puzzles</h2>
-                <p>Challenge yourself with increasingly complex puzzles that test your logic, strategy, and problem-solving skills. Each level brings new mechanics and surprises.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">🌐</span>
-                <h2>Play Anywhere</h2>
-                <p>Fully browser-based gameplay means you can enjoy Shijuyouxi on any device - desktop, tablet, or mobile. No downloads or installations required.</p>
-            </div>
-            <div class="feature-card">
-                <span class="feature-icon">⚡</span>
-                <h2>Instant Loading</h2>
-                <p>Optimized for speed and performance, Shijuyouxi loads instantly and runs smoothly on all modern devices and browsers.</p>
-            </div>
-        </section>
-
-        <section id="about" class="game-info">
-            <div class="container">
-                <h2>🎮 About Shijuyouxi Game</h2>
-                <p style="text-align: center; font-size: 1.1rem; color: #666; margin-bottom: 30px;">
-                    Shijuyouxi represents the next evolution in online puzzle gaming, combining intuitive gameplay with sophisticated challenge design.
-                </p>
                 
-                <div class="info-grid">
-                    <div class="info-item">
-                        <h3>🎯 Game Genre</h3>
-                        <p>Strategic puzzle game with progressive difficulty levels and innovative mechanics that keep players engaged for hours.</p>
+                <!-- 益智游戏分类 -->
+                <section class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">🧩</span>
+                        <h2 class="category-title">益智游戏</h2>
                     </div>
-                    <div class="info-item">
-                        <h3>👥 Target Audience</h3>
-                        <p>Perfect for puzzle enthusiasts aged 8 to 80, from casual players looking for fun to serious gamers seeking mental challenges.</p>
+                    <div class="games-grid">
+                        <div class="game-card">
+                            <div class="game-thumbnail puzzle-bg">🔢</div>
+                            <div class="game-info">
+                                <h3 class="game-title">数字拼图</h3>
+                                <p class="game-description">经典的数字滑块拼图游戏，挑战你的逻辑思维能力</p>
+                                <a href="/games/number-puzzle.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail puzzle-bg">🧠</div>
+                            <div class="game-info">
+                                <h3 class="game-title">记忆大师</h3>
+                                <p class="game-description">测试你的记忆力，翻开卡片找到相同的图案</p>
+                                <a href="/games/memory-master.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail puzzle-bg">🔤</div>
+                            <div class="game-info">
+                                <h3 class="game-title">单词拼图</h3>
+                                <p class="game-description">从字母网格中找出隐藏的单词，提升词汇量</p>
+                                <a href="/games/word-puzzle.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail puzzle-bg">🎯</div>
+                            <div class="game-info">
+                                <h3 class="game-title">逻辑推理</h3>
+                                <p class="game-description">运用逻辑推理解决复杂谜题，锻炼思维能力</p>
+                                <a href="/games/logic-puzzle.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-item">
-                        <h3>🏆 Unique Features</h3>
-                        <p>Dynamic puzzle generation, multiple solution paths, hint system, and progress tracking make every session unique and rewarding.</p>
+                </section>
+
+                <!-- 休闲游戏分类 -->
+                <section class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">🎈</span>
+                        <h2 class="category-title">休闲游戏</h2>
                     </div>
-                    <div class="info-item">
-                        <h3>📱 Compatibility</h3>
-                        <p>Runs perfectly on Chrome, Firefox, Safari, and Edge. Optimized for both desktop and mobile devices with responsive design.</p>
+                    <div class="games-grid">
+                        <div class="game-card">
+                            <div class="game-thumbnail casual-bg">🎯</div>
+                            <div class="game-info">
+                                <h3 class="game-title">泡泡射击</h3>
+                                <p class="game-description">轻松有趣的泡泡消除游戏，放松身心的好选择</p>
+                                <a href="/games/bubble-shooter.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail casual-bg">🍭</div>
+                            <div class="game-info">
+                                <h3 class="game-title">糖果消消乐</h3>
+                                <p class="game-description">甜美的三消游戏，连接相同糖果获得高分</p>
+                                <a href="/games/candy-crush.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail casual-bg">🎨</div>
+                            <div class="game-info">
+                                <h3 class="game-title">涂色游戏</h3>
+                                <p class="game-description">发挥创意为各种图案涂上美丽颜色</p>
+                                <a href="/games/coloring-game.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail casual-bg">🐱</div>
+                            <div class="game-info">
+                                <h3 class="game-title">宠物护理</h3>
+                                <p class="game-description">照顾可爱的虚拟宠物，体验养成的乐趣</p>
+                                <a href="/games/pet-care.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail casual-bg">🌸</div>
+                            <div class="game-info">
+                                <h3 class="game-title">花园装饰</h3>
+                                <p class="game-description">设计和装饰你的梦想花园，享受园艺乐趣</p>
+                                <a href="/games/garden-deco.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
                     </div>
-                    <div class="info-item">
-                        <h3>🔒 Privacy & Safety</h3>
-                        <p>No personal data collection, no registration required. Safe, secure, and family-friendly gaming experience for everyone.</p>
+                </section>
+
+                <!-- 动作游戏分类 -->
+                <section class="category-section">
+                    <div class="category-header">
+                        <span class="category-icon">⚡</span>
+                        <h2 class="category-title">动作游戏</h2>
                     </div>
-                    <div class="info-item">
-                        <h3>🆓 Free to Play</h3>
-                        <p>Completely free with no hidden costs, no in-app purchases, and no premium subscriptions. Pure gaming fun without barriers.</p>
+                    <div class="games-grid">
+                        <div class="game-card">
+                            <div class="game-thumbnail action-bg">🧟</div>
+                            <div class="game-info">
+                                <h3 class="game-title">怪物生存者</h3>
+                                <p class="game-description">在怪物群中生存，使用策略和反应力保持活力</p>
+                                <a href="/games/monster-survivors.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail action-bg">🏃</div>
+                            <div class="game-info">
+                                <h3 class="game-title">无尽奔跑</h3>
+                                <p class="game-description">在无尽的跑道上狂奔，躲避障碍收集金币</p>
+                                <a href="/games/endless-runner.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail action-bg">🚀</div>
+                            <div class="game-info">
+                                <h3 class="game-title">太空射击</h3>
+                                <p class="game-description">驾驶战舰在太空中战斗，消灭入侵的敌人</p>
+                                <a href="/games/space-shooter.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
+                        
+                        <div class="game-card">
+                            <div class="game-thumbnail action-bg">🥷</div>
+                            <div class="game-info">
+                                <h3 class="game-title">忍者跳跃</h3>
+                                <p class="game-description">操控忍者在平台间跳跃，展现敏捷身手</p>
+                                <a href="/games/ninja-jump.html" class="play-btn">🎮 开始游戏</a>
+                            </div>
+                        </div>
                     </div>
-                </div>
+                </section>
+                
             </div>
-        </section>
+        </div>
     </main>
 
     <footer>
         <div class="container">
             <div class="footer-links">
-                <a href="#game">Play Game</a>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="/privacy">Privacy Policy</a>
-                <a href="/terms">Terms of Service</a>
-                <a href="/contact">Contact</a>
+                <a href="/">首页</a>
+                <a href="/about">关于我们</a>
+                <a href="/privacy">隐私政策</a>
+                <a href="/contact">联系我们</a>
             </div>
-            <p>&copy; 2025 Shijuyouxi.store - All rights reserved. The ultimate online puzzle gaming experience.</p>
+            <p>&copy; 2025 Shijuyouxi.store - 你的免费在线游戏门户</p>
         </div>
     </footer>
 
     <script>
-        // Smooth scrolling for navigation links
+        // 平滑滚动
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
             anchor.addEventListener('click', function (e) {
                 e.preventDefault();
@@ -453,23 +446,30 @@
                 }
             });
         });
-
-        // Add loading state for iframe
-        const iframe = document.querySelector('.game-iframe');
-        const container = document.querySelector('.game-iframe-container');
         
-        iframe.addEventListener('load', function() {
-            container.style.opacity = '1';
-        });
-
-        // Add some interactive effects
-        document.querySelectorAll('.feature-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.transform = 'translateY(-8px) scale(1.02)';
+        // 游戏卡片点击效果
+        document.querySelectorAll('.game-card').forEach(card => {
+            card.addEventListener('click', function(e) {
+                // 如果点击的不是按钮，则触发按钮点击
+                if (!e.target.classList.contains('play-btn')) {
+                    const btn = this.querySelector('.play-btn');
+                    if (btn) {
+                        btn.click();
+                    }
+                }
             });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.transform = 'translateY(0) scale(1)';
+        });
+        
+        // 添加加载动画
+        window.addEventListener('load', function() {
+            document.querySelectorAll('.game-card').forEach((card, index) => {
+                card.style.opacity = '0';
+                card.style.transform = 'translateY(20px)';
+                setTimeout(() => {
+                    card.style.transition = 'all 0.5s ease';
+                    card.style.opacity = '1';
+                    card.style.transform = 'translateY(0)';
+                }, index * 100);
             });
         });
     </script>
