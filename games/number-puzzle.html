@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>数字拼图 - 免费在线数独游戏 | Shijuyouxi</title>
+    <meta name="description" content="挑战经典数独数字拼图游戏！锻炼逻辑思维，提升数字推理能力。无需下载，免费在线畅玩。">
+    <meta name="keywords" content="数独, 数字拼图, 益智游戏, 逻辑游戏, 免费游戏">
+    <link rel="canonical" href="https://shijuyouxi.store/games/number-puzzle.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%);
+            min-height: 100vh;
+            color: #2d3436;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #fd79a8;
+        }
+        
+        .back-btn {
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(253, 121, 168, 0.3);
+        }
+        
+        .game-header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            color: white;
+        }
+        
+        .game-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            margin: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #fd79a8, #e84393);
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background: rgba(253, 121, 168, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #fd79a8;
+        }
+        
+        .info-card h3 {
+            color: #e84393;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .info-card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+        
+        .rules-section {
+            background: rgba(232, 67, 147, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px solid rgba(232, 67, 147, 0.2);
+        }
+        
+        .rules-title {
+            color: #e84393;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .rules-list {
+            list-style: none;
+            space-y: 10px;
+        }
+        
+        .rules-list li {
+            color: #636e72;
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            line-height: 1.5;
+        }
+        
+        .rules-list li:before {
+            content: "📝";
+            position: absolute;
+            left: 0;
+        }
+        
+        .game-tips {
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .tips-title {
+            color: #f39c12;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .tips-list {
+            list-style: none;
+            space-y: 10px;
+        }
+        
+        .tips-list li {
+            color: #636e72;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid rgba(231, 76, 60, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            color: #e74c3c;
+        }
+        
+        .retry-btn {
+            background: linear-gradient(45px, #fd79a8, #e84393);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .game-container {
+                margin: 15px;
+                padding: 20px;
+            }
+            
+            .game-iframe-container {
+                height: 400px;
+            }
+            
+            .game-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-iframe-container {
+                height: 350px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../" class="logo">Shijuyouxi</a>
+                <ul class="nav-links">
+                    <li><a href="../">首页</a></li>
+                    <li><a href="../" class="back-btn">← 返回游戏列表</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="game-header">
+            <div class="container">
+                <h1 class="game-title">🔢 数字拼图</h1>
+                <p class="game-subtitle">挑战经典数独游戏，用逻辑填满每个格子！</p>
+            </div>
+        </section>
+
+        <div class="game-container">
+            <div class="container">
+                <div class="game-iframe-container">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="全屏">⛶</button>
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>游戏加载中...</p>
+                    </div>
+                    <iframe 
+                        src="https://playpager.com/embed/sudoku/index.html" 
+                        class="game-iframe"
+                        id="gameFrame"
+                        title="数独数字拼图游戏"
+                        loading="eager"
+                        allow="fullscreen"
+                        onload="hideLoading()"
+                        onerror="showError()">
+                    </iframe>
+                </div>
+                
+                <div class="rules-section">
+                    <h3 class="rules-title">🎯 游戏规则</h3>
+                    <ul class="rules-list">
+                        <li>在9×9的网格中填入数字1-9</li>
+                        <li>每行、每列都必须包含1-9的所有数字</li>
+                        <li>每个3×3的小方格也必须包含1-9的所有数字</li>
+                        <li>每个数字在每行、每列、每个小方格中只能出现一次</li>
+                        <li>根据已给出的数字，用逻辑推理填完整个谜题</li>
+                    </ul>
+                </div>
+                
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>🧠 益智挑战</h3>
+                        <p>数独是世界上最受欢迎的数字逻辑游戏之一。通过填数字锻炼逻辑思维、提高专注力和问题解决能力。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>📊 难度等级</h3>
+                        <p>游戏提供从简单到专家级的多种难度。初学者可以从简单难度开始，逐步提升挑战等级。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>⏱️ 游戏时间</h3>
+                        <p>每局游戏时间从5分钟到30分钟不等，取决于难度和个人技巧。非常适合碎片时间的益智娱乐。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🎮 操作简单</h3>
+                        <p>点击空格选择数字，支持笔记功能帮助推理。界面简洁清晰，专注于纯粹的数字逻辑挑战。</p>
+                    </div>
+                </div>
+                
+                <div class="game-tips">
+                    <h3 class="tips-title">🔥 解题技巧</h3>
+                    <ul class="tips-list">
+                        <li>从最容易填入的数字开始，寻找只有一个可能位置的数字</li>
+                        <li>利用排除法，当某行、列或方格缺少特定数字时重点关注</li>
+                        <li>使用笔记功能记录可能的数字，帮助复杂推理</li>
+                        <li>先关注数字较多的行、列和方格，它们通常更容易完成</li>
+                        <li>保持耐心，有时需要多次尝试才能找到突破口</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+        
+        function showError() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ 游戏加载失败</h3>
+                        <p>请检查网络连接或稍后重试</p>
+                        <button class="retry-btn" onclick="location.reload()">重新加载</button>
+                    </div>
+                `;
+            }
+        }
+        
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameFrame');
+            const container = iframe.parentElement;
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                }
+            }
+        }
+        
+        document.addEventListener('fullscreenchange', function() {
+            const btn = document.querySelector('.fullscreen-btn');
+            if (document.fullscreenElement) {
+                btn.innerHTML = '🔙';
+                btn.title = '退出全屏';
+            } else {
+                btn.innerHTML = '⛶';
+                btn.title = '全屏';
+            }
+        });
+        
+        window.addEventListener('load', function() {
+            document.querySelector('.game-container').style.opacity = '0';
+            document.querySelector('.game-container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.querySelector('.game-container').style.transition = 'all 0.6s ease';
+                document.querySelector('.game-container').style.opacity = '1';
+                document.querySelector('.game-container').style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
