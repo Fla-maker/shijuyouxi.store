@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>怪物生存者 - 免费在线动作游戏 | Shijuyouxi</title>
+    <meta name="description" content="在怪物生存者中挑战你的生存技能！躲避怪物攻击，收集物品，在危险的世界中生存下去。">
+    <meta name="keywords" content="怪物生存者, 生存游戏, 动作游戏, 免费游戏, 在线游戏">
+    <link rel="canonical" href="https://shijuyouxi.store/games/monster-survivors.html">
+    <link rel="icon" type="image/x-icon" href="../favicon.ico">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: linear-gradient(135deg, #00b894 0%, #00cec9 100%);
+            min-height: 100vh;
+            color: #2d3436;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            box-shadow: 0 2px 20px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+        
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+        
+        .logo {
+            font-size: 24px;
+            font-weight: 700;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            text-decoration: none;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+            align-items: center;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #2d3436;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+        
+        .nav-links a:hover {
+            color: #00b894;
+        }
+        
+        .back-btn {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 184, 148, 0.3);
+        }
+        
+        .game-header {
+            text-align: center;
+            padding: 40px 0 20px 0;
+            color: white;
+        }
+        
+        .game-title {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 700;
+            margin-bottom: 15px;
+            text-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+        }
+        
+        .game-subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .game-container {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            margin: 20px;
+            padding: 30px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+        }
+        
+        .game-iframe-container {
+            position: relative;
+            width: 100%;
+            height: 600px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+            margin-bottom: 30px;
+            background: linear-gradient(45deg, #00b894, #00cec9);
+        }
+        
+        .game-iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+            border-radius: 15px;
+        }
+        
+        .loading {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            color: white;
+        }
+        
+        .spinner {
+            width: 50px;
+            height: 50px;
+            border: 4px solid rgba(255, 255, 255, 0.3);
+            border-top: 4px solid white;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+            margin-bottom: 20px;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .game-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background: rgba(0, 184, 148, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            border-left: 4px solid #00b894;
+        }
+        
+        .info-card h3 {
+            color: #00b894;
+            font-size: 1.2rem;
+            margin-bottom: 10px;
+            font-weight: 600;
+        }
+        
+        .info-card p {
+            color: #636e72;
+            line-height: 1.6;
+        }
+        
+        .controls-section {
+            background: rgba(0, 206, 201, 0.05);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border: 2px solid rgba(0, 206, 201, 0.2);
+        }
+        
+        .controls-title {
+            color: #00cec9;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+            text-align: center;
+        }
+        
+        .controls-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .control-item {
+            display: flex;
+            align-items: center;
+            background: white;
+            padding: 12px 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        .control-key {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-weight: 600;
+            margin-right: 10px;
+            min-width: 40px;
+            text-align: center;
+        }
+        
+        .game-tips {
+            background: rgba(255, 193, 7, 0.1);
+            border-radius: 15px;
+            padding: 25px;
+            margin-top: 30px;
+            border-left: 4px solid #ffc107;
+        }
+        
+        .tips-title {
+            color: #f39c12;
+            font-size: 1.2rem;
+            margin-bottom: 15px;
+            font-weight: 600;
+        }
+        
+        .tips-list {
+            list-style: none;
+            space-y: 10px;
+        }
+        
+        .tips-list li {
+            color: #636e72;
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .tips-list li:before {
+            content: "💡";
+            position: absolute;
+            left: 0;
+        }
+        
+        .fullscreen-btn {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            z-index: 10;
+        }
+        
+        .fullscreen-btn:hover {
+            background: rgba(0, 0, 0, 0.9);
+        }
+        
+        .error-message {
+            background: rgba(231, 76, 60, 0.1);
+            border: 2px solid rgba(231, 76, 60, 0.3);
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            color: #e74c3c;
+        }
+        
+        .error-message h3 {
+            margin-bottom: 10px;
+        }
+        
+        .retry-btn {
+            background: linear-gradient(45deg, #00b894, #00cec9);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-weight: 600;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .retry-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        /* 响应式设计 */
+        @media (max-width: 768px) {
+            .nav-links {
+                gap: 15px;
+            }
+            
+            .game-container {
+                margin: 15px;
+                padding: 20px;
+            }
+            
+            .game-iframe-container {
+                height: 400px;
+            }
+            
+            .game-info {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            
+            .controls-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .game-iframe-container {
+                height: 300px;
+            }
+            
+            .container {
+                padding: 0 10px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="../" class="logo">Shijuyouxi</a>
+                <ul class="nav-links">
+                    <li><a href="../">首页</a></li>
+                    <li><a href="../" class="back-btn">← 返回游戏列表</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="game-header">
+            <div class="container">
+                <h1 class="game-title">🧟 怪物生存者</h1>
+                <p class="game-subtitle">在危险的世界中生存，躲避怪物攻击，展现你的生存技能！</p>
+            </div>
+        </section>
+
+        <div class="game-container">
+            <div class="container">
+                <div class="game-iframe-container">
+                    <button class="fullscreen-btn" onclick="toggleFullscreen()" title="全屏">⛶</button>
+                    <div class="loading" id="loading">
+                        <div class="spinner"></div>
+                        <p>游戏加载中...</p>
+                    </div>
+                    <iframe 
+                        src="https://cloud.onlinegames.io/games/2025/unity/monster-survivors/index-og.html" 
+                        class="game-iframe"
+                        id="gameFrame"
+                        title="怪物生存者在线游戏"
+                        loading="eager"
+                        allow="fullscreen; gamepad; microphone; camera"
+                        onload="hideLoading()"
+                        onerror="showError()">
+                    </iframe>
+                </div>
+                
+                <div class="controls-section">
+                    <h3 class="controls-title">🎮 游戏控制</h3>
+                    <div class="controls-grid">
+                        <div class="control-item">
+                            <span class="control-key">WASD</span>
+                            <span>移动角色</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">鼠标</span>
+                            <span>攻击方向</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">空格</span>
+                            <span>特殊技能</span>
+                        </div>
+                        <div class="control-item">
+                            <span class="control-key">ESC</span>
+                            <span>暂停游戏</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="game-info">
+                    <div class="info-card">
+                        <h3>🎯 游戏目标</h3>
+                        <p>在充满危险的世界中尽可能长时间地生存下去。躲避或消灭各种怪物，收集资源和道具来增强你的能力。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>⚡ 游戏特色</h3>
+                        <p>快节奏的生存动作游戏，具有多种武器选择、技能升级系统和各种类型的敌人。每次游戏都是独特的挑战。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🏆 游戏难度</h3>
+                        <p>适中到困难。需要快速反应和战略思考。随着时间推移，敌人会变得更强更多，挑战不断升级。</p>
+                    </div>
+                    
+                    <div class="info-card">
+                        <h3>🎮 兼容性</h3>
+                        <p>支持所有现代浏览器，包括Chrome、Firefox、Safari和Edge。建议使用鼠标和键盘获得最佳游戏体验。</p>
+                    </div>
+                </div>
+                
+                <div class="game-tips">
+                    <h3 class="tips-title">🔥 游戏技巧</h3>
+                    <ul class="tips-list">
+                        <li>保持移动！静止不动会让你成为怪物的易攻击目标</li>
+                        <li>优先收集经验值和升级道具来增强你的能力</li>
+                        <li>学会合理使用特殊技能的时机，它们有冷却时间</li>
+                        <li>观察怪物的攻击模式，找出最佳的躲避方法</li>
+                        <li>合理选择武器升级路线，不同武器有不同的优势</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <script>
+        // 隐藏加载动画
+        function hideLoading() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.style.display = 'none';
+            }
+        }
+        
+        // 显示错误信息
+        function showError() {
+            const loading = document.getElementById('loading');
+            if (loading) {
+                loading.innerHTML = `
+                    <div class="error-message">
+                        <h3>⚠️ 游戏加载失败</h3>
+                        <p>请检查网络连接或稍后重试</p>
+                        <button class="retry-btn" onclick="location.reload()">重新加载</button>
+                    </div>
+                `;
+            }
+        }
+        
+        // 全屏功能
+        function toggleFullscreen() {
+            const iframe = document.getElementById('gameFrame');
+            const container = iframe.parentElement;
+            
+            if (!document.fullscreenElement) {
+                if (container.requestFullscreen) {
+                    container.requestFullscreen();
+                } else if (container.webkitRequestFullscreen) {
+                    container.webkitRequestFullscreen();
+                } else if (container.msRequestFullscreen) {
+                    container.msRequestFullscreen();
+                }
+            } else {
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+        
+        // 检测全屏状态变化
+        document.addEventListener('fullscreenchange', function() {
+            const btn = document.querySelector('.fullscreen-btn');
+            if (document.fullscreenElement) {
+                btn.innerHTML = '🔙';
+                btn.title = '退出全屏';
+            } else {
+                btn.innerHTML = '⛶';
+                btn.title = '全屏';
+            }
+        });
+        
+        // 键盘快捷键
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'F11') {
+                e.preventDefault();
+                toggleFullscreen();
+            }
+        });
+        
+        // 页面加载完成后的动画
+        window.addEventListener('load', function() {
+            document.querySelector('.game-container').style.opacity = '0';
+            document.querySelector('.game-container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.querySelector('.game-container').style.transition = 'all 0.6s ease';
+                document.querySelector('.game-container').style.opacity = '1';
+                document.querySelector('.game-container').style.transform = 'translateY(0)';
+            }, 200);
+        });
+    </script>
+</body>
+</html>
